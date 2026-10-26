@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letters to Nobody</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="masthead">
+        <p class="eyebrow">A PRIVATE COLLECTION OF THOUGHTS</p>
+        <h1>Letters to <em>Nobody.</em></h1>
+        <p class="subtitle">everything I cannot fit into a sentence.</p>
+        <span class="ornament">✳ &nbsp; ✧ &nbsp; ✳</span>
+    </header>
+
+    
+<nav class="navigation">
+    <a href="#writing-desk">MY DIARY</a>
+    <a href="#archive">THE ARCHIVE</a>
+    <a href="#book-corner">THE BOOKSHELF</a>
+    <a href="#music-corner">THE MUSIC ROOM</a>
+    <a href="#movie-corner">THE CINEMA</a>
+    <a href="#little-things">LITTLE THINGS</a>
+	<a href="#memory-wall">Memory Wall</a>
+</nav>
+
+
+    <main>
+        <section class="welcome">
+            <p class="section-label">A NOTE TO MYSELF</p>
+            <h2>Dear diary,</h2>
+            <p>
+                No audience. No expectations.
+                Just a place to leave my thoughts,
+                collect my memories and be honest with myself.
+            </p>
+            <p class="handwriting">This little corner belongs to me. ♡</p>
+        </section>
+
+        <section id="writing-desk" class="writing-section">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">YOUR PERSONAL JOURNAL</p>
+                    <h2>The Writing Desk</h2>
+                </div>
+                <span class="volume">VOL. 001</span>
+            </div>
+
+            <form id="entry-form">
+                <div class="field">
+                    <label for="entry-date">Date</label>
+                    <input type="date" id="entry-date" required>
+                </div>
+
+                <div class="field">
+                    <label for="entry-title">The title of this page</label>
+                    <input
+                        type="text"
+                        id="entry-title"
+                        maxlength="120"
+                        placeholder="A thought, a moment, a feeling..."
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="entry-body">Dear diary...</label>
+                    <textarea
+                        id="entry-body"
+                        rows="10"
+                        placeholder="Write whatever is on your mind. It doesn't have to be perfect."
+                        required
+                    ></textarea>
+                </div>
+
+                <p class="writing-prompt">
+                    A little prompt, if you need one:
+                    What is something you wish you could say out loud?
+                </p>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-button">
+                        SAVE TO MY DIARY ♡
+                    </button>
+                    <button type="button" id="new-button" class="secondary">
+                        NEW ENTRY
+                    </button>
+                </div>
+
+                <p id="form-status" class="status" role="status"
+                   aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="archive" class="archive-section">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">EVERYTHING I'VE WRITTEN</p>
+                    <h2>The Archive</h2>
+                </div>
+                <span id="entry-count" class="volume">0 PAGES</span>
+            </div>
+
+            <div class="archive-tools">
+                <label for="search-entries">Find a page</label>
+                <input
+                    type="search"
+                    id="search-entries"
+                    placeholder="Search titles and entries..."
+                >
+                <button type="button" id="export-button" class="secondary">
+                    EXPORT SCRAPBOOK BACKUP
+                </button>
+            </div>
+
+            <div id="entries-list" class="entries-list"></div>
+
+            <p id="empty-message" class="empty-message">
+                Your pages will live here.
+                Write your first entry whenever you're ready. ♡
+            </p>
+        </section>
+
+<!-- THE BOOK CORNER -->
+<section id="book-corner" class="collection-room book-room">
+    <div class="section-heading">
+        <div>
+            <p class="section-label">MARGINALIA &amp; FAVOURITE PASSAGES</p>
+            <h2>The Bookshelf</h2>
+            <p class="room-note">Books I've loved, words I've kept.</p>
+        </div>
+        <span class="volume">LIBRARY / 001</span>
+    </div>
+
+    <div class="bookcase">
+        <div class="bookcase-top">
+            MY LITTLE LIBRARY
+        </div>
+        <div id="bookshelf" class="bookshelf">
+            <!-- Book spines are created by JavaScript -->
+        </div>
+        <div class="bookcase-bottom"></div>
+    </div>
+
+    <div class="collection-form">
+        <h3>Add a book to the shelf</h3>
+        <form id="book-form">
+            <label for="book-title">Book title</label>
+            <input id="book-title" maxlength="120" required
+                   placeholder="The book that stayed with me">
+
+            <label for="book-author">Author</label>
+            <input id="book-author" maxlength="100"
+                   placeholder="Who wrote it?">
+
+            <label for="book-colour">Book spine colour</label>
+            <select id="book-colour">
+                <option value="wine">Burgundy</option>
+                <option value="forest">Forest green</option>
+                <option value="coffee">Espresso brown</option>
+                <option value="olive">Olive</option>
+                <option value="dusty">Dusty rose</option>
+                <option value="blue">Dusty blue</option>
+            </select>
+
+            <button type="submit">ADD TO BOOKCASE ♡</button>
+        </form>
+    </div>
+
+  <div id="quote-desk" class="quote-desk">
+        <p class="section-label">PRESERVED BETWEEN THE PAGES</p>
+        <h3>Little lines I love</h3>
+
+        <form id="quote-form">
+            <label for="quote-book">From which book?</label>
+            <select id="quote-book" required>
+                <option value="">Choose a book</option>
+            </select>
+
+            <label for="quote-text">The quote</label>
+            <textarea id="quote-text" rows="3" maxlength="1500"
+                      required placeholder="A sentence worth keeping..."></textarea>
+
+            <label for="quote-page">Page number (optional)</label>
+            <input id="quote-page" maxlength="30"
+                   placeholder="Page 127">
+
+            <label for="quote-note">Why I kept it (optional)</label>
+            <textarea id="quote-note" rows="2" maxlength="1000"
+                      placeholder="What it means to me..."></textarea>
+
+            <button type="submit">PRESS BETWEEN THE PAGES</button>
+        </form>
+
+        <div id="quotes-list" class="quote-grid"></div>
+    </div>
+</section>
+
+<!-- THE MUSIC CORNER -->
+<section id="music-corner" class="collection-room music-room">
+    <div class="section-heading">
+        <div>
+            <p class="section-label">SOUNDTRACKS TO MY LIFE</p>
+            <h2>The Music Room</h2>
+            <p class="room-note">Some feelings arrive in songs.</p>
+        </div>
+        <span class="volume">SIDE A / SIDE B</span>
+    </div>
+
+    <div class="music-scene">
+        <div class="music-stand">
+            <div class="stand-sheet">
+                <span>NOW PLAYING</span>
+                <strong>THE SOUND OF ME</strong>
+                <span>♪ ♫ ♪</span>
+            </div>
+            <div class="stand-post"></div>
+            <div class="stand-feet"></div>
+        </div>
+
+        <div class="record-player">
+            <div class="turntable">
+                <div class="platter">
+                    <div class="record-grooves">
+                        <div class="record-label">LTN<br>♡</div>
+                    </div>
+                </div>
+                <div class="player-controls">LETTERS TO NOBODY · STEREO</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-form">
+        <h3>Add a song to the collection</h3>
+        <form id="song-form">
+            <label for="song-title">Song title</label>
+            <input id="song-title" maxlength="150" required
+                   placeholder="The song I keep replaying">
+
+            <label for="song-artist">Artist</label>
+            <input id="song-artist" maxlength="120" required
+                   placeholder="Artist or band">
+
+            <label for="song-album">Album (optional)</label>
+            <input id="song-album" maxlength="150"
+                   placeholder="Album name">
+
+            <label for="song-link">Song link (optional)</label>
+            <input id="song-link" type="url" maxlength="1000"
+                   placeholder="https://...">
+
+            <label for="song-memory">The memory or feeling (optional)</label>
+            <textarea id="song-memory" rows="2" maxlength="1000"
+                      placeholder="What does this song remind me of?"></textarea>
+
+            <button type="submit">ADD TO THE RECORD CRATE ♡</button>
+        </form>
+    </div>
+
+    <div class="vinyl-search">
+        <label for="search-songs">Find a record in my collection</label>
+        <input id="search-songs" type="search"
+               placeholder="Search by song, artist or album...">
+    </div>
+
+    <p class="room-note">Choose a record to turn it over and read its story.</p>
+    <div id="vinyl-crate" class="vinyl-crate"></div>
+    <p id="songs-empty" class="empty-message">
+        Your first favourite song is waiting to be filed here.
+    </p>
+    <div id="song-detail" class="paper-note" hidden></div>
+</section>
+
+<!-- THE MOVIE CORNER -->
+<section id="movie-corner" class="collection-room movie-room">
+    <div class="section-heading">
+        <div>
+            <p class="section-label">THE LITTLE CINEMA OF MY MIND</p>
+            <h2>The Cinema</h2>
+            <p class="room-note">Films, favourite scenes and fictional people I miss.</p>
+        </div>
+        <span class="volume">NOW SHOWING</span>
+    </div>
+
+    <div class="movie-banner">
+        <span>✳</span>
+        <p>Some stories end with the credits.</p>
+        <p>Some follow us home.</p>
+        <span>✳</span>
+    </div>
+
+    <div class="collection-form">
+        <h3>Save a film to my scrapbook</h3>
+        <form id="movie-form">
+            <label for="movie-title">Movie title</label>
+            <input id="movie-title" maxlength="150" required
+                   placeholder="The film I want to remember">
+
+            <label for="movie-year">Release year (optional)</label>
+            <input id="movie-year" type="number" min="1888" max="2100"
+                   placeholder="2026">
+
+            <label for="movie-rating">My rating</label>
+            <select id="movie-rating">
+                <option value="5">★★★★★ Loved it</option>
+                <option value="4">★★★★☆ Really liked it</option>
+                <option value="3">★★★☆☆ It was good</option>
+                <option value="2">★★☆☆☆ Not for me</option>
+                <option value="1">★☆☆☆☆ Disappointing</option>
+            </select>
+
+            <label for="movie-scene">Favourite scene or character</label>
+            <textarea id="movie-scene" rows="2" maxlength="1500"
+                      placeholder="The scene that lives rent-free in my head..."></textarea>
+
+            <label for="movie-quote">Favourite quote (optional)</label>
+            <textarea id="movie-quote" rows="2" maxlength="1000"
+                      placeholder="A line worth remembering..."></textarea>
+
+            <label for="movie-review">My little review</label>
+            <textarea id="movie-review" rows="3" maxlength="2000"
+                      placeholder="How did it make me feel?"></textarea>
+
+            <button type="submit">SAVE TO MY FILM JOURNAL ♡</button>
+        </form>
+    </div>
+
+    <div class="vinyl-search">
+        <label for="search-movies">Find a film</label>
+        <input id="search-movies" type="search"
+               placeholder="Search your film journal...">
+    </div>
+
+    <div id="movies-list" class="movie-grid"></div>
+    <p id="movies-empty" class="empty-message">
+        The lights are low. Your first film is yet to be filed.
+    </p>
+</section>
+
+        <section id="little-things" class="collections">
+            <p class="section-label">COLLECTED FRAGMENTS</p>
+			
+<section id="memory-wall" class="collection-room">
+  <p class="eyebrow">little pieces of a life</p>
+  <h2>The Memory Wall</h2>
+  <p class="section-intro">
+    Photographs, fleeting moments, and things I never want to forget.
+  </p>
+
+  <form id="memory-form" class="memory-form">
+    <label for="memory-caption">What should this memory be called?</label>
+    <input id="memory-caption" type="text"
+      placeholder="That afternoon in the garden..." required>
+
+    <label for="memory-date">When did it happen?</label>
+    <input id="memory-date" type="date">
+
+    <label for="memory-image">Photo path</label>
+    <input id="memory-image" type="text"
+      placeholder="photos/sunset.jpg">
+
+    <p class="form-hint">
+      Put your photo in a folder named photos beside index.html.
+      Then enter its filename, such as photos/sunset.jpg.
+    </p>
+
+    <label for="memory-note">A note to my future self</label>
+    <textarea id="memory-note" rows="3"
+      placeholder="What do I want to remember about this?"></textarea>
+
+    <button type="submit">Pin this memory</button>
+  </form>
+
+  <div class="memory-wall-heading">
+    <span>Collected moments</span>
+    <span class="handwritten">for another day ♡</span>
+  </div>
+
+  <div id="memory-grid" class="memory-grid"></div>
+  <p id="memory-empty" class="empty-state">
+    The wall is waiting for its first little memory.
+  </p>
+</section>
+
+            <h2>The Little Things</h2>
+
+            <div class="fragment-grid">
+                <article class="fragment">
+                    <span>01 / REMEMBER</span>
+                    <p>Little moments matter, too.</p>
+                </article>
+
+                <article class="fragment">
+                    <span>02 / BREATHE</span>
+                    <p>You don't need every answer today.</p>
+                </article>
+
+                <article class="fragment">
+                    <span>03 / BECOMING</span>
+                    <p>You're allowed to change your mind.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>LETTERS TO NOBODY ♡</p>
+        <p>A little place to return to yourself.</p>
+        <a href="#">BACK TO THE BEGINNING ↑</a>
+    </footer>
+</body>
+</html>
